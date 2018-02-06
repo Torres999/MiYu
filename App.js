@@ -11,7 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
-// import SplashScreen from "rn-splash-screen";
+import SplashScreen from 'react-native-splash-screen'
 
 
 const instructions = Platform.select({
@@ -22,24 +22,28 @@ const instructions = Platform.select({
 });
 
 export default class App extends Component<{}> {
-  render() {
+    componentDidMount() {
+        // do stuff while splash screen is shown
+        // After having done stuff (such as async tasks) hide the splash screen
+        SplashScreen.hide();
+    }
 
-// Hide the active splash screen
-//       SplashScreen.hide();
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!--dalin
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit App.js
-        </Text>
-        <Text style={styles.instructions}>
-          {instructions}
-        </Text>
-      </View>
-    );
-  }
+    render() {
+
+        return (
+            <View style={styles.container}>
+              <Text style={styles.welcome}>
+                Welcome to React Native!--dalin
+              </Text>
+              <Text style={styles.instructions}>
+                To get started, edit App.js
+              </Text>
+              <Text style={styles.instructions}>
+                  {instructions}
+              </Text>
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
