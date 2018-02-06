@@ -11,7 +11,7 @@ import {
   Text,
   View
 } from 'react-native';
-import SplashScreen from "rn-splash-screen";
+// import SplashScreen from "rn-splash-screen";
 
 
 const instructions = Platform.select({
@@ -25,7 +25,7 @@ export default class App extends Component<{}> {
   render() {
 
 // Hide the active splash screen
-      SplashScreen.hide();
+//       SplashScreen.hide();
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
