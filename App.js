@@ -9,7 +9,7 @@ import {
     Image,
     Platform,
     StyleSheet,
-    Text,
+    // Text,
     View,
     StatusBar
 } from 'react-native';
@@ -18,6 +18,43 @@ import imageSource from './src/img';
 import { color, size } from './src/theme';
 import SplashScreen from 'react-native-splash-screen';
 import TabNavigator from 'react-native-tab-navigator';
+
+// import 'react';
+// import Svg, {
+//     Circle,
+//     Ellipse,
+//     G,
+//     LinearGradient,
+//     RadialGradient,
+//     Line,
+//     Path,
+//     Polygon,
+//     Polyline,
+//     Rect,
+//     Symbol,
+//     Text,
+//     Use,
+//     Defs,
+//     Stop
+// } from 'react-native-svg';
+// class SvgExample extends Component {
+//     render() {
+//         return (
+//             <Svg
+//                 height="100"
+//                 width="200"
+//             >
+//                 <Text
+//                     x="100"
+//                     y="75"
+//                     stroke="#251000"
+//                     fill="#600"
+//                     textAnchor="middle"
+//                 >密境</Text>
+//             </Svg>
+//         );
+//     }
+// }
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' +
@@ -56,6 +93,7 @@ export default class App extends Component<{}> {
                     renderSelectedIcon={() => <Image source={imageSource.find_selected}/>}
                     onPress={() => this.setState({selectedTab: 'find'})}>
                     <Screens.Find/>
+                    {/*<SvgExample/>*/}
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     tabStyle={styles.tabNavigatorItemStyle}
@@ -116,11 +154,14 @@ const styles = StyleSheet.create({
     titleStyle: {
         fontSize: size.font.min,
         marginBottom: 5,
+        color: color.font.gray
     },
     selectedTitleStyle: {
-        color: '#44A1FD'
+        // color: '#44A1FD'
+        color: color.font.brown
     },
     tabNavigatorItemStyle: {
-        backgroundColor: color.primary
+        // backgroundColor: color.primary,
+        // backgroundColor: color.font.yellow,
     },
 });

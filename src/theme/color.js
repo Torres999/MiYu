@@ -13,6 +13,8 @@ export default {
     white: '#FFFFFF',
     black: '#000',
     blue: '#0398FF',
+    yellow: '#fff854',
+    brown: '#241000',
     darkGray: '#888888', // input输入后颜色
     orange: '#FF5D38',
     placeHolder: '#CCCCCC' // input输入前颜色
