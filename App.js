@@ -10,9 +10,12 @@ import {
     Platform,
     StyleSheet,
     Text,
-    View
+    View,
+    StatusBar
 } from 'react-native';
+import * as Screens from './src/screens/';
 import imageSource from './src/img';
+import { color, size } from './src/theme';
 import SplashScreen from 'react-native-splash-screen';
 import TabNavigator from 'react-native-tab-navigator';
 
@@ -23,61 +26,51 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-class Home extends Component {
-    render() {
-        return (
-            <View style={styles.container}>
-                <Text style={styles.welcome}>
-                    Welcome to React Native!--dalin
-                </Text>
-                <Text style={styles.instructions}>
-                    To get started, edit App.js
-                </Text>
-                <Text style={styles.instructions}>
-                    {instructions}
-                </Text>
-            </View>
-        )
-    }
-}
-
-class Friend extends Component {
-    render() {
-        return (
-            <View style={styles.container}>
-                <Text style={styles.welcome}>
-                    Profile
-                </Text>
-            </View>
-        )
-    }
-}
-
 export default class App extends Component<{}> {
+    constructor(props) {
+        super(props);//必须的，否则constructor报错
+        StatusBar.setHidden(true);
+    }
+
     componentDidMount() {
         // do stuff while splash screen is shown
         // After having done stuff (such as async tasks) hide the splash screen
         SplashScreen.hide();
+        StatusBar.setHidden(true);
     }
 
     state = {
-        selectedTab: 'home'
+        selectedTab: 'find'
     };
 
     render() {
         return (
             <TabNavigator style={styles.container}>
                 <TabNavigator.Item
-                    selected={this.state.selectedTab === 'home'}
-                    title="对话"
+                    tabStyle={styles.tabNavigatorItemStyle}
+                    selected={this.state.selectedTab === 'find'}
+                    title="密境"
                     selectedTitleStyle={styles.selectedTitleStyle}
+                    titleStyle={styles.titleStyle}
+                    renderIcon={() => <Image source={imageSource.find}/>}
+                    renderSelectedIcon={() => <Image source={imageSource.find_selected}/>}
+                    onPress={() => this.setState({selectedTab: 'find'})}>
+                    <Screens.Find/>
+                </TabNavigator.Item>
+                <TabNavigator.Item
+                    tabStyle={styles.tabNavigatorItemStyle}
+                    selected={this.state.selectedTab === 'dialog'}
+                    title="密话"
+                    selectedTitleStyle={styles.selectedTitleStyle}
+                    titleStyle={styles.titleStyle}
                     renderIcon={() => <Image source={imageSource.home}/>}
                     renderSelectedIcon={() => <Image source={imageSource.home_selected}/>}
                     // badgeText="99" //TODO
-                    onPress={() => this.setState({selectedTab: 'home'})}>
-                    <Home/>
+                    onPress={() => this.setState({selectedTab: 'dialog'})}>
+                    <Screens.Dialog/>
                 </TabNavigator.Item>
                 <TabNavigator.Item
+                    tabStyle={styles.tabNavigatorItemStyle}
                     selected={this.state.selectedTab === 'friend'}
                     title="密友"
                     selectedTitleStyle={styles.selectedTitleStyle}
@@ -85,19 +78,10 @@ export default class App extends Component<{}> {
                     renderIcon={() => <Image source={imageSource.friend}/>}
                     renderSelectedIcon={() => <Image source={imageSource.friend_selected}/>}
                     onPress={() => this.setState({selectedTab: 'friend'})}>
-                    <Friend/>
+                    <Screens.Friend/>
                 </TabNavigator.Item>
                 <TabNavigator.Item
-                    selected={this.state.selectedTab === 'find'}
-                    title="发现"
-                    selectedTitleStyle={styles.selectedTitleStyle}
-                    titleStyle={styles.titleStyle}
-                    renderIcon={() => <Image source={imageSource.find}/>}
-                    renderSelectedIcon={() => <Image source={imageSource.find_selected}/>}
-                    onPress={() => this.setState({selectedTab: 'find'})}>
-                    <Home/>
-                </TabNavigator.Item>
-                <TabNavigator.Item
+                    tabStyle={styles.tabNavigatorItemStyle}
                     selected={this.state.selectedTab === 'me'}
                     title="我"
                     selectedTitleStyle={styles.selectedTitleStyle}
@@ -105,7 +89,7 @@ export default class App extends Component<{}> {
                     renderIcon={() => <Image source={imageSource.me}/>}
                     renderSelectedIcon={() => <Image source={imageSource.me_selected}/>}
                     onPress={() => this.setState({selectedTab: 'me'})}>
-                    <Friend/>
+                    <Screens.Me/>
                 </TabNavigator.Item>
             </TabNavigator>
         );
@@ -130,10 +114,13 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     titleStyle: {
-        fontSize: 10,
+        fontSize: size.font.min,
         marginBottom: 5,
     },
     selectedTitleStyle: {
         color: '#44A1FD'
+    },
+    tabNavigatorItemStyle: {
+        backgroundColor: color.primary
     },
 });
