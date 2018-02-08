@@ -19,6 +19,8 @@ import { color, size } from './src/theme';
 import SplashScreen from 'react-native-splash-screen';
 import TabNavigator from 'react-native-tab-navigator';
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 // import 'react';
 // import Svg, {
 //     Circle,
@@ -101,8 +103,8 @@ export default class App extends Component<{}> {
                     title="密话"
                     selectedTitleStyle={styles.selectedTitleStyle}
                     titleStyle={styles.titleStyle}
-                    renderIcon={() => <Image source={imageSource.home}/>}
-                    renderSelectedIcon={() => <Image source={imageSource.home_selected}/>}
+                    renderIcon = {() => <Image source={imageSource.home} style={styles.Icon} />}
+                    renderSelectedIcon={() => <Image source={imageSource.home_selected} style={styles.Icon}/>}
                     // badgeText="99" //TODO
                     onPress={() => this.setState({selectedTab: 'dialog'})}>
                     <Screens.Dialog/>
@@ -124,8 +126,10 @@ export default class App extends Component<{}> {
                     title="我"
                     selectedTitleStyle={styles.selectedTitleStyle}
                     titleStyle={styles.titleStyle}
-                    renderIcon={() => <Image source={imageSource.me}/>}
-                    renderSelectedIcon={() => <Image source={imageSource.me_selected}/>}
+                    renderIcon = {() => <Icon name="user" size={22} color={color.font.gray} style={styles.Icon} />}
+                    renderSelectedIcon={() => <Icon name="user" size={22} color={color.font.brown} />}// TODO 如果使用空心的user
+                    //renderIcon={() => <Image source={imageSource.me}/>}
+                    //renderSelectedIcon={() => <Image source={imageSource.me_selected}/>}
                     onPress={() => this.setState({selectedTab: 'me'})}>
                     <Screens.Me/>
                 </TabNavigator.Item>
@@ -158,7 +162,7 @@ const styles = StyleSheet.create({
     },
     selectedTitleStyle: {
         // color: '#44A1FD'
-        color: color.font.brown
+        color: color.font.orange
     },
     tabNavigatorItemStyle: {
         // backgroundColor: color.primary,
