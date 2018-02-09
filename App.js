@@ -166,6 +166,6 @@ const styles = StyleSheet.create({
     },
     tabNavigatorItemStyle: {
         // backgroundColor: color.primary,
-        // backgroundColor: color.font.yellow,
+        backgroundColor: color.font.yellow,
     },
 });
