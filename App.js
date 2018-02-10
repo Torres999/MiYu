@@ -9,7 +9,7 @@ import {
     Image,
     Platform,
     StyleSheet,
-    // Text,
+    Text,
     View,
     StatusBar
 } from 'react-native';
@@ -20,43 +20,6 @@ import SplashScreen from 'react-native-splash-screen';
 import TabNavigator from 'react-native-tab-navigator';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-
-// import 'react';
-// import Svg, {
-//     Circle,
-//     Ellipse,
-//     G,
-//     LinearGradient,
-//     RadialGradient,
-//     Line,
-//     Path,
-//     Polygon,
-//     Polyline,
-//     Rect,
-//     Symbol,
-//     Text,
-//     Use,
-//     Defs,
-//     Stop
-// } from 'react-native-svg';
-// class SvgExample extends Component {
-//     render() {
-//         return (
-//             <Svg
-//                 height="100"
-//                 width="200"
-//             >
-//                 <Text
-//                     x="100"
-//                     y="75"
-//                     stroke="#251000"
-//                     fill="#600"
-//                     textAnchor="middle"
-//                 >密境</Text>
-//             </Svg>
-//         );
-//     }
-// }
 
 const instructions = Platform.select({
     ios: 'Press Cmd+R to reload,\n' +
@@ -84,6 +47,8 @@ export default class App extends Component<{}> {
 
     render() {
         return (
+
+
             <TabNavigator style={styles.container}>
                 <TabNavigator.Item
                     tabStyle={styles.tabNavigatorItemStyle}
@@ -103,7 +68,7 @@ export default class App extends Component<{}> {
                     title="密话"
                     selectedTitleStyle={styles.selectedTitleStyle}
                     titleStyle={styles.titleStyle}
-                    renderIcon = {() => <Image source={imageSource.home} style={styles.Icon} />}
+                    renderIcon={() => <Image source={imageSource.home} style={styles.Icon}/>}
                     renderSelectedIcon={() => <Image source={imageSource.home_selected} style={styles.Icon}/>}
                     // badgeText="99" //TODO
                     onPress={() => this.setState({selectedTab: 'dialog'})}>
@@ -126,8 +91,8 @@ export default class App extends Component<{}> {
                     title="我"
                     selectedTitleStyle={styles.selectedTitleStyle}
                     titleStyle={styles.titleStyle}
-                    renderIcon = {() => <Icon name="user" size={22} color={color.font.gray} style={styles.Icon} />}
-                    renderSelectedIcon={() => <Icon name="user" size={22} color={color.font.brown} />}// TODO 如果使用空心的user
+                    renderIcon={() => <Icon name="user" size={22} color={color.font.gray} style={styles.Icon}/>}
+                    renderSelectedIcon={() => <Icon name="user" size={22} color={color.font.brown}/>}// TODO 如果使用空心的user
                     //renderIcon={() => <Image source={imageSource.me}/>}
                     //renderSelectedIcon={() => <Image source={imageSource.me_selected}/>}
                     onPress={() => this.setState({selectedTab: 'me'})}>

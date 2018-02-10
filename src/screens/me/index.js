@@ -2,21 +2,24 @@ import React, { Component } from 'react';
 import {
     Text,
     View,
-    StyleSheet
+    StyleSheet,
+    Button,
+    StatusBar
 } from 'react-native';
-import { sendGet } from '../../utils/RequestUtils'
+import { color, size } from '../../theme';
+import { StackNavigator } from "react-navigation";
 
-const msg = sendGet({
-    url: "/",
-    param: "{}",
-    success: aa
-})
-
-function aa(str) {
-    this.state.titleText = str.name;
+class DetailsScreen extends React.Component {
+    render() {
+        return (
+            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+                <Text>我 Details Screen</Text>
+            </View>
+        );
+    }
 }
 
-export default class Me extends Component {
+class MeScreen extends React.Component {
     constructor(props) {
         super(props);//必须的，否则constructor报错
         this.state = {
@@ -26,7 +29,12 @@ export default class Me extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
+            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+                <StatusBar
+                    hidden={false}
+                    barStyle="light-content"
+                    height={size.statusBar.height}
+                />
                 <Text style={styles.welcome}
                       onPress={
                           () => {
@@ -53,10 +61,64 @@ export default class Me extends Component {
                 <Text style={styles.welcome}>
                     意见反馈
                 </Text>
+                <Button
+                    title="Go to Details"
+                    onPress={() => this.props.navigation.navigate('Details')}
+                />
             </View>
-        )
+        );
     }
 }
+
+export default class Me extends Component {
+    render() {
+        return <Navigator/>;
+    }
+}
+
+const Navigator = StackNavigator(
+    {
+        Me: {
+            screen: MeScreen,
+            navigationOptions: {
+                headerStyle: {
+                    backgroundColor: color.font.brown,
+                },
+                headerTitleStyle: {
+                    color: color.font.yellow,
+                    alignSelf: 'center',
+                },
+                headerTitle: '我',
+                headerBackTitleStyle: {
+                    color: color.font.yellow,
+                    alignSelf: 'center',
+                    fontSize: size.font.ms,
+                },
+            }
+        },
+        Details: {
+            screen: DetailsScreen,
+            navigationOptions: {
+                headerStyle: {
+                    backgroundColor: color.font.brown,
+                },
+                headerTitleStyle: {
+                    color: color.font.yellow,
+                    alignSelf: 'center',
+                },
+                headerTitle: '我-子页面',
+                headerBackTitleStyle: {
+                    color: color.font.yellow,
+                    alignSelf: 'center',
+                    frontSize: size.font.ms,
+                },
+            }
+        },
+    },
+    {
+        initialRouteName: 'Me',
+    }
+);
 
 const styles = StyleSheet.create({
     container: {
