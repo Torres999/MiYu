@@ -1,21 +1,12 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
     Image,
     Platform,
-    StyleSheet,
-    Text,
-    View,
     StatusBar
 } from 'react-native';
 import * as Screens from './src/screens/';
 import imageSource from './src/img';
-import { color, size } from './src/theme';
+import { color, size, styles } from './src/theme';
 import SplashScreen from 'react-native-splash-screen';
 import TabNavigator from 'react-native-tab-navigator';
 
@@ -47,8 +38,6 @@ export default class App extends Component<{}> {
 
     render() {
         return (
-
-
             <TabNavigator style={styles.container}>
                 <TabNavigator.Item
                     tabStyle={styles.tabNavigatorItemStyle}
@@ -92,7 +81,7 @@ export default class App extends Component<{}> {
                     selectedTitleStyle={styles.selectedTitleStyle}
                     titleStyle={styles.titleStyle}
                     renderIcon={() => <Icon name="user" size={22} color={color.font.gray} style={styles.Icon}/>}
-                    renderSelectedIcon={() => <Icon name="user" size={22} color={color.font.brown}/>}// TODO 如果使用空心的user
+                    renderSelectedIcon={() => <Icon name="user" size={22} color={color.font.brown}/>} // TODO 如果使用空心的user
                     //renderIcon={() => <Image source={imageSource.me}/>}
                     //renderSelectedIcon={() => <Image source={imageSource.me_selected}/>}
                     onPress={() => this.setState({selectedTab: 'me'})}>
@@ -102,35 +91,3 @@ export default class App extends Component<{}> {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
-    titleStyle: {
-        fontSize: size.font.min,
-        marginBottom: 5,
-        color: color.font.gray
-    },
-    selectedTitleStyle: {
-        // color: '#44A1FD'
-        color: color.font.orange
-    },
-    tabNavigatorItemStyle: {
-        // backgroundColor: color.primary,
-        backgroundColor: color.font.yellow,
-    },
-});

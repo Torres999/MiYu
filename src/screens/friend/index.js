@@ -2,17 +2,16 @@ import React, { Component } from 'react';
 import {
     Text,
     View,
-    StyleSheet,
     Button,
     StatusBar
 } from 'react-native';
-import { color, size } from '../../theme';
+import { color, size, styles } from '../../theme';
 import { StackNavigator } from "react-navigation";
 
 class DetailsScreen extends React.Component {
     render() {
         return (
-            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <View style={styles.style}>
                 <Text>密友 Details Screen</Text>
             </View>
         );
@@ -22,7 +21,7 @@ class DetailsScreen extends React.Component {
 class FriendScreen extends React.Component {
     render() {
         return (
-            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <View style={styles.viewStyle}>
                 <StatusBar
                     hidden={false}
                     barStyle="light-content"
@@ -95,29 +94,3 @@ const Navigator = StackNavigator(
         initialRouteName: 'Friend',
     }
 );
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
-    navigatorHeaderStyle: {
-        backgroundColor: color.font.brown,
-    },
-    navigatorHeaderTitleStyle: {
-        color: color.font.orange
-    },
-});
-

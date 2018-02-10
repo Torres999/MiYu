@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 import {
     Text,
     View,
-    StyleSheet,
     Button,
-    StatusBar
+    StatusBar,
+    ScrollView,
+    RefreshControl
 } from 'react-native';
-import { color, size } from '../../theme';
+import { color, size, styles } from '../../theme';
+import { Divider } from '../../components';
 import { StackNavigator } from "react-navigation";
 
 class DetailsScreen extends React.Component {
     render() {
         return (
-            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <View style={styles.viewStyle}>
                 <Text>我 Details Screen</Text>
             </View>
         );
@@ -20,21 +22,31 @@ class DetailsScreen extends React.Component {
 }
 
 class MeScreen extends React.Component {
+    onRefresh() {
+        refreshing: true//TODO 好像没用
+        this.setState({
+            testRefresh: '刷新后......'
+        })
+    }
+
     constructor(props) {
         super(props);//必须的，否则constructor报错
         this.state = {
-            testText: '默认头像'
+            testText: '默认头像',
+            testRefresh: '刷新前'
         }
     }
 
     render() {
+        const {refreshing = false} = this.props;
         return (
-            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <View style={styles.viewStyle}>
                 <StatusBar
                     hidden={false}
                     barStyle="light-content"
                     height={size.statusBar.height}
                 />
+
                 <Text style={styles.welcome}
                       onPress={
                           () => {
@@ -65,6 +77,26 @@ class MeScreen extends React.Component {
                     title="Go to Details"
                     onPress={() => this.props.navigation.navigate('Details')}
                 />
+
+
+                <ScrollView
+                    refreshControl={
+                        <RefreshControl
+                            refreshing={refreshing}
+                            onRefresh={this.onRefresh.bind(this)}
+                            style={{backgroundColor: 'transparent'}}
+                            title="获取数据中..."
+                            colors={[color.loading]}
+                            tintColor={color.loading}
+                        />
+                    }
+                >
+
+                    <Divider height={10}/>
+                    <Text style={styles.welcome}>
+                        下拉更新,{this.state.testRefresh}
+                    </Text>
+                </ScrollView>
             </View>
         );
     }
@@ -119,22 +151,3 @@ const Navigator = StackNavigator(
         initialRouteName: 'Me',
     }
 );
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
-});

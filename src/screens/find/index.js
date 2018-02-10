@@ -2,19 +2,16 @@ import React, { Component } from 'react';
 import {
     Text,
     View,
-    StyleSheet,
     Button,
     StatusBar
 } from 'react-native';
-import { color, size } from '../../theme';
+import { color, size, styles } from '../../theme';
 import { StackNavigator } from "react-navigation";
-
-import Icon from 'react-native-vector-icons/FontAwesome';
 
 class DetailsScreen extends React.Component {
     render() {
         return (
-            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <View style={styles.viewStyle}>
                 <Text>密境 Details Screen</Text>
             </View>
         );
@@ -24,7 +21,7 @@ class DetailsScreen extends React.Component {
 class FindScreen extends React.Component {
     render() {
         return (
-            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <View style={styles.viewStyle}>
                 <StatusBar
                     hidden={false}
                     barStyle="light-content"
@@ -101,22 +98,3 @@ const Navigator = StackNavigator(
         initialRouteName: 'Find',
     }
 );
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
-});

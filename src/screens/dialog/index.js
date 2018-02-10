@@ -2,17 +2,16 @@ import React, { Component } from 'react';
 import {
     Text,
     View,
-    StyleSheet,
     Button,
     StatusBar
 } from 'react-native';
-import { color,size } from '../../theme';
+import { color, size, styles } from '../../theme';
 import { StackNavigator } from "react-navigation";
 
 class DetailsScreen extends React.Component {
     render() {
         return (
-            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <View style={styles.viewStyle}>
                 <Text>密话 Details Screen</Text>
             </View>
         );
@@ -22,7 +21,7 @@ class DetailsScreen extends React.Component {
 class DialogScreen extends React.Component {
     render() {
         return (
-            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <View style={styles.viewStyle}>
                 <StatusBar
                     hidden={false}
                     barStyle="light-content"
@@ -59,12 +58,12 @@ const Navigator = StackNavigator(
                 },
                 headerTitleStyle: {
                     color: color.font.yellow,
-                    alignSelf : 'center',
+                    alignSelf: 'center',
                 },
                 headerTitle: '密话',
                 headerBackTitleStyle: {
                     color: color.font.yellow,
-                    alignSelf : 'center',
+                    alignSelf: 'center',
                     fontSize: size.font.ms,
                 },
             }
@@ -77,13 +76,13 @@ const Navigator = StackNavigator(
                 },
                 headerTitleStyle: {
                     color: color.font.yellow,
-                    alignSelf : 'center',
+                    alignSelf: 'center',
                 },
                 headerTitle: '密话-子页面',
                 headerBackTitle: '返回',
                 headerBackTitleStyle: {
                     color: color.font.yellow,
-                    alignSelf : 'center',
+                    alignSelf: 'center',
                     fontSize: size.font.ms,
                 },
             }
@@ -93,22 +92,3 @@ const Navigator = StackNavigator(
         initialRouteName: 'Dialog',
     }
 );
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    },
-    instructions: {
-        textAlign: 'center',
-        color: '#333333',
-        marginBottom: 5,
-    },
-});

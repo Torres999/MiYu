@@ -1,4 +1,7 @@
 const imageSource = {
+    leftArrow: require('./icon/leftArrow.png'),
+    rightArrow: require('./icon/rightArrow.png'),
+
     home: require('./icon/home.png'),
     home_selected: require('./icon/home_selected.png'),
     friend: require('./icon/friend.png'),
