@@ -65,13 +65,14 @@ const Navigator = StackNavigator(
                 headerTitleStyle: {
                     color: color.font.yellow,
                     alignSelf: 'center',
+                    fontSize: size.font.lg,
                 },
                 headerTitle: '密境',
                 //headerBackTitle: '',设置跳转页面左侧返回箭头后面的文字，默认是上一个页面的标题。可以自定义，也可以设置为null
                 headerBackTitleStyle: {
                     color: color.font.yellow,
                     alignSelf: 'center',
-                    fontSize: size.font.ms,
+                    fontSize: size.font.sm,
                 },
             }
         },
@@ -84,12 +85,13 @@ const Navigator = StackNavigator(
                 headerTitleStyle: {
                     color: color.font.yellow,
                     alignSelf: 'center',
+                    fontSize: size.font.lg,
                 },
                 headerTitle: '密境-子页面',
                 headerBackTitleStyle: {
                     color: color.font.yellow,
                     alignSelf: 'center',
-                    fontSize: size.font.ms,
+                    fontSize: size.font.sm,
                 },
             }
         },

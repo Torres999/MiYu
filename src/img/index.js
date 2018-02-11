@@ -9,7 +9,10 @@ const imageSource = {
     find: require('./icon/home.png'),
     find_selected: require('./icon/home_selected.png'),
     me: require('./icon/home.png'),
-    me_selected: require('./icon/home_selected.png')
+    me_selected: require('./icon/home_selected.png'),
+
+    // background
+    myHeaderBg: require('./bg/my.png'),
 };
 
 export default imageSource;

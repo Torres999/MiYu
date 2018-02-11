@@ -59,12 +59,13 @@ const Navigator = StackNavigator(
                 headerTitleStyle: {
                     color: color.font.yellow,
                     alignSelf: 'center',
+                    fontSize: size.font.lg,
                 },
                 headerTitle: '密话',
                 headerBackTitleStyle: {
                     color: color.font.yellow,
                     alignSelf: 'center',
-                    fontSize: size.font.ms,
+                    fontSize: size.font.sm,
                 },
             }
         },
@@ -77,13 +78,14 @@ const Navigator = StackNavigator(
                 headerTitleStyle: {
                     color: color.font.yellow,
                     alignSelf: 'center',
+                    fontSize: size.font.lg,
                 },
                 headerTitle: '密话-子页面',
                 headerBackTitle: '返回',
                 headerBackTitleStyle: {
                     color: color.font.yellow,
                     alignSelf: 'center',
-                    fontSize: size.font.ms,
+                    fontSize: size.font.sm,
                 },
             }
         },

@@ -5,11 +5,12 @@ import {
     Button,
     StatusBar,
     ScrollView,
-    RefreshControl
+    RefreshControl, ImageBackground
 } from 'react-native';
 import { color, size, styles } from '../../theme';
 import { Divider } from '../../components';
 import { StackNavigator } from "react-navigation";
+import imageSource from '../../img';
 
 class DetailsScreen extends React.Component {
     render() {
@@ -47,36 +48,47 @@ class MeScreen extends React.Component {
                     height={size.statusBar.height}
                 />
 
-                <Text style={styles.welcome}
-                      onPress={
-                          () => {
-                              fetch('http://localhost:18080/')
-                                  .then((response) => response.text())
-                                  .then((responseText) => {
-                                      this.setState({
-                                          testText: JSON.parse(responseText).name,
+                <ImageBackground
+                    style={[styles.flexDirectionColumn, styles.headerWrap]}
+                    source={imageSource.myHeaderBg}
+                    imageStyle={[
+                        {
+                            resizeMode: 'cover'
+                        },
+                        styles.headerWrap
+                    ]}
+                >
+                    <Text style={styles.welcome}
+                          onPress={
+                              () => {
+                                  fetch('http://localhost:18080/')
+                                      .then((response) => response.text())
+                                      .then((responseText) => {
+                                          this.setState({
+                                              testText: JSON.parse(responseText).name,
+                                          })
                                       })
-                                  })
-                          }
-                      }>
-                    头像：{this.state.testText}
-                </Text>
-                <Text style={styles.welcome}>
-                    昵称／性别
-                </Text>
-                <Text style={styles.welcome}>
-                    我的蜜境
-                </Text>
-                <Text style={styles.welcome}>
-                    添加是否需要验证
-                </Text>
-                <Text style={styles.welcome}>
-                    意见反馈
-                </Text>
-                <Button
-                    title="Go to Details"
-                    onPress={() => this.props.navigation.navigate('Details')}
-                />
+                              }
+                          }>
+                        头像：{this.state.testText}
+                    </Text>
+                    <Text style={styles.welcome}>
+                        昵称／性别
+                    </Text>
+                    <Text style={styles.welcome}>
+                        我的蜜境
+                    </Text>
+                    <Text style={styles.welcome}>
+                        添加是否需要验证
+                    </Text>
+                    <Text style={styles.welcome}>
+                        意见反馈
+                    </Text>
+                    <Button
+                        title="Go to Details"
+                        onPress={() => this.props.navigation.navigate('Details')}
+                    />
+                </ImageBackground>
 
 
                 <ScrollView
@@ -119,12 +131,13 @@ const Navigator = StackNavigator(
                 headerTitleStyle: {
                     color: color.font.yellow,
                     alignSelf: 'center',
+                    fontSize: size.font.lg,
                 },
                 headerTitle: '我',
                 headerBackTitleStyle: {
                     color: color.font.yellow,
                     alignSelf: 'center',
-                    fontSize: size.font.ms,
+                    fontSize: size.font.sm,
                 },
             }
         },
@@ -137,12 +150,13 @@ const Navigator = StackNavigator(
                 headerTitleStyle: {
                     color: color.font.yellow,
                     alignSelf: 'center',
+                    fontSize: size.font.lg,
                 },
                 headerTitle: '我-子页面',
                 headerBackTitleStyle: {
                     color: color.font.yellow,
                     alignSelf: 'center',
-                    frontSize: size.font.ms,
+                    frontSize: size.font.sm,
                 },
             }
         },

@@ -49,6 +49,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
 
+    headerWrap: {
+        height: 152,
+        width: size.window.width
+    },
+
     avatar: {
         height: 64
     },
