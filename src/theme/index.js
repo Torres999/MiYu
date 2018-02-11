@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        backgroundColor: '#f5f5f5',
     },
     viewStyle: {
         flex: 1,
@@ -36,6 +36,21 @@ const styles = StyleSheet.create({
         backgroundColor: color.font.yellow,
     },
 
+    //StackNavigator.navigationOptions
+    headerStyle: {
+        backgroundColor: color.font.brown,
+    },
+    headerTitleStyle: {
+        color: color.font.yellow,
+        alignSelf: 'center',
+        fontSize: size.font.lg,
+    },
+    headerBackTitleStyle: {
+        color: color.font.yellow,
+        alignSelf: 'center',
+        fontSize: size.font.sm,
+    },
+
 
     flexCenter: {
         justifyContent: 'center',
@@ -49,13 +64,31 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
 
+
+    containerView: {
+        flex: 1,
+        alignItems: 'center',
+        flexDirection: 'row',
+        backgroundColor: color.white
+    },
+    containerFont: {
+        fontSize: size.font.xs,
+        textAlign: 'center',
+        margin: 10,
+    },
+    containerIcon: {
+        marginLeft: 12
+    },
+
+
     headerWrap: {
         height: 152,
         width: size.window.width
     },
 
     avatar: {
-        height: 64
+        height: 64,
+        width: 64,
     },
     lightText: {
         fontSize: size.font.ms,

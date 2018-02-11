@@ -13,6 +13,9 @@ const imageSource = {
 
     // background
     myHeaderBg: require('./bg/my.png'),
+
+    // placeholder
+    companyAvatar: require('./placeholder/company.png'),
 };
 
 export default imageSource;

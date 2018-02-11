@@ -53,40 +53,19 @@ const Navigator = StackNavigator(
         Dialog: {
             screen: DialogScreen,
             navigationOptions: {
-                headerStyle: {
-                    backgroundColor: color.font.brown,
-                },
-                headerTitleStyle: {
-                    color: color.font.yellow,
-                    alignSelf: 'center',
-                    fontSize: size.font.lg,
-                },
                 headerTitle: '密话',
-                headerBackTitleStyle: {
-                    color: color.font.yellow,
-                    alignSelf: 'center',
-                    fontSize: size.font.sm,
-                },
+                headerStyle: styles.headerStyle,
+                headerTitleStyle: styles.headerTitleStyle,
+                headerBackTitleStyle: styles.headerBackTitleStyle,
             }
         },
         Details: {
             screen: DetailsScreen,
             navigationOptions: {
-                headerStyle: {
-                    backgroundColor: color.font.brown,
-                },
-                headerTitleStyle: {
-                    color: color.font.yellow,
-                    alignSelf: 'center',
-                    fontSize: size.font.lg,
-                },
                 headerTitle: '密话-子页面',
-                headerBackTitle: '返回',
-                headerBackTitleStyle: {
-                    color: color.font.yellow,
-                    alignSelf: 'center',
-                    fontSize: size.font.sm,
-                },
+                headerStyle: styles.headerStyle,
+                headerTitleStyle: styles.headerTitleStyle,
+                headerBackTitleStyle: styles.headerBackTitleStyle,
             }
         },
     },
