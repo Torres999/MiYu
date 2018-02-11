@@ -45,11 +45,10 @@ export default class App extends Component<{}> {
                     title="密境"
                     selectedTitleStyle={styles.selectedTitleStyle}
                     titleStyle={styles.titleStyle}
-                    renderIcon={() => <Image source={imageSource.find}/>}
-                    renderSelectedIcon={() => <Image source={imageSource.find_selected}/>}
+                    renderIcon={() => <Icon name="user-secret" size={22} color={color.font.gray} style={styles.Icon}/>}
+                    renderSelectedIcon={() => <Icon name="user-secret" size={22} color={color.font.brown}/>}
                     onPress={() => this.setState({selectedTab: 'find'})}>
                     <Screens.Find/>
-                    {/*<SvgExample/>*/}
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     tabStyle={styles.tabNavigatorItemStyle}
@@ -57,8 +56,8 @@ export default class App extends Component<{}> {
                     title="密话"
                     selectedTitleStyle={styles.selectedTitleStyle}
                     titleStyle={styles.titleStyle}
-                    renderIcon={() => <Image source={imageSource.home} style={styles.Icon}/>}
-                    renderSelectedIcon={() => <Image source={imageSource.home_selected} style={styles.Icon}/>}
+                    renderIcon={() => <Icon name="comments" size={22} color={color.font.gray} style={styles.Icon}/>}
+                    renderSelectedIcon={() => <Icon name="comments" size={22} color={color.font.brown}/>}
                     // badgeText="99" //TODO
                     onPress={() => this.setState({selectedTab: 'dialog'})}>
                     <Screens.Dialog/>
@@ -69,8 +68,8 @@ export default class App extends Component<{}> {
                     title="密友"
                     selectedTitleStyle={styles.selectedTitleStyle}
                     titleStyle={styles.titleStyle}
-                    renderIcon={() => <Image source={imageSource.friend}/>}
-                    renderSelectedIcon={() => <Image source={imageSource.friend_selected}/>}
+                    renderIcon={() => <Icon name="users" size={22} color={color.font.gray} style={styles.Icon}/>}
+                    renderSelectedIcon={() => <Icon name="users" size={22} color={color.font.brown}/>}
                     onPress={() => this.setState({selectedTab: 'friend'})}>
                     <Screens.Friend/>
                 </TabNavigator.Item>

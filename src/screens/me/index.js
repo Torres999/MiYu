@@ -11,16 +11,9 @@ import { color, size, styles } from '../../theme';
 import { Divider } from '../../components';
 import { StackNavigator } from "react-navigation";
 import imageSource from '../../img';
-
-class DetailsScreen extends React.Component {
-    render() {
-        return (
-            <View style={styles.viewStyle}>
-                <Text>我 Details Screen</Text>
-            </View>
-        );
-    }
-}
+import MyZoneScreen from './MyZone';
+import FeedbackScreen from "./Feedback";
+import SelfInfoScreen from "./SelfInfo";
 
 class MeScreen extends React.Component {
     onRefresh() {
@@ -41,23 +34,19 @@ class MeScreen extends React.Component {
     render() {
         const {refreshing = false} = this.props;
         return (
-            <View style={styles.viewStyle}>
+            <View>
                 <StatusBar
                     hidden={false}
                     barStyle="light-content"
                     height={size.statusBar.height}
                 />
 
-                <ImageBackground
-                    style={[styles.flexDirectionColumn, styles.headerWrap]}
-                    source={imageSource.myHeaderBg}
-                    imageStyle={[
-                        {
-                            resizeMode: 'cover'
-                        },
-                        styles.headerWrap
-                    ]}
-                >
+                <Divider height={10}/>
+                <View style={[styles.flexDirectionRow, {
+                    justifyContent: 'flex-start',
+                    alignItems: 'center',
+                    backgroundColor: '#F5FCFF'
+                }]}>
                     <Text style={styles.welcome}
                           onPress={
                               () => {
@@ -72,43 +61,46 @@ class MeScreen extends React.Component {
                           }>
                         头像：{this.state.testText}
                     </Text>
-                    <Text style={styles.welcome}>
+                    <Text style={styles.welcome} onPress={() => this.props.navigation.navigate('SelfInfo')}>
                         昵称／性别
                     </Text>
-                    <Text style={styles.welcome}>
+                </View>
+
+
+                <Divider height={10}/>
+                <View style={[styles.flexDirectionRow, {
+                    justifyContent: 'flex-start',
+                    alignItems: 'center',
+                    backgroundColor: '#F5FCFF'
+                }]}>
+                    <Text style={styles.welcome} onPress={() => this.props.navigation.navigate('MyZone')}>
                         我的蜜境
                     </Text>
+                </View>
+
+
+                <Divider height={10}/>
+                <View style={[styles.flexDirectionRow, {
+                    justifyContent: 'flex-start',
+                    alignItems: 'center',
+                    backgroundColor: '#F5FCFF'
+                }]}>
                     <Text style={styles.welcome}>
                         添加是否需要验证
                     </Text>
-                    <Text style={styles.welcome}>
+                </View>
+
+
+                <Divider height={10}/>
+                <View style={[styles.flexDirectionRow, {
+                    justifyContent: 'flex-start',
+                    alignItems: 'center',
+                    backgroundColor: '#F5FCFF'
+                }]}>
+                    <Text style={styles.welcome} onPress={() => this.props.navigation.navigate('Feedback')}>
                         意见反馈
                     </Text>
-                    <Button
-                        title="Go to Details"
-                        onPress={() => this.props.navigation.navigate('Details')}
-                    />
-                </ImageBackground>
-
-
-                <ScrollView
-                    refreshControl={
-                        <RefreshControl
-                            refreshing={refreshing}
-                            onRefresh={this.onRefresh.bind(this)}
-                            style={{backgroundColor: 'transparent'}}
-                            title="获取数据中..."
-                            colors={[color.loading]}
-                            tintColor={color.loading}
-                        />
-                    }
-                >
-
-                    <Divider height={10}/>
-                    <Text style={styles.welcome}>
-                        下拉更新,{this.state.testRefresh}
-                    </Text>
-                </ScrollView>
+                </View>
             </View>
         );
     }
@@ -141,8 +133,8 @@ const Navigator = StackNavigator(
                 },
             }
         },
-        Details: {
-            screen: DetailsScreen,
+        SelfInfo: {
+            screen: SelfInfoScreen,
             navigationOptions: {
                 headerStyle: {
                     backgroundColor: color.font.brown,
@@ -152,11 +144,49 @@ const Navigator = StackNavigator(
                     alignSelf: 'center',
                     fontSize: size.font.lg,
                 },
-                headerTitle: '我-子页面',
+                headerTitle: '个人信息',
                 headerBackTitleStyle: {
                     color: color.font.yellow,
                     alignSelf: 'center',
-                    frontSize: size.font.sm,
+                    fontSize: size.font.sm,
+                },
+            }
+        },
+        MyZone: {
+            screen: MyZoneScreen,
+            navigationOptions: {
+                headerStyle: {
+                    backgroundColor: color.font.brown,
+                },
+                headerTitleStyle: {
+                    color: color.font.yellow,
+                    alignSelf: 'center',
+                    fontSize: size.font.lg,
+                },
+                headerTitle: '我的蜜境',
+                headerBackTitleStyle: {
+                    color: color.font.yellow,
+                    alignSelf: 'center',
+                    fontSize: size.font.sm,
+                },
+            }
+        },
+        Feedback: {
+            screen: FeedbackScreen,
+            navigationOptions: {
+                headerStyle: {
+                    backgroundColor: color.font.brown,
+                },
+                headerTitleStyle: {
+                    color: color.font.yellow,
+                    alignSelf: 'center',
+                    fontSize: size.font.lg,
+                },
+                headerTitle: '意见反馈',
+                headerBackTitleStyle: {
+                    color: color.font.yellow,
+                    alignSelf: 'center',
+                    fontSize: size.font.sm,
                 },
             }
         },
