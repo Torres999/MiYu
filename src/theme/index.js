@@ -5,8 +5,6 @@ import size from './size';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: '#f5f5f5',
     },
     viewStyle: {
@@ -64,11 +62,15 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
 
-
-    containerView: {
-        flex: 1,
+    // self info
+    containerHeadView: {
+        height: 80,
         alignItems: 'center',
-        flexDirection: 'row',
+        backgroundColor: color.white
+    },
+    containerView: {
+        height: 34.5,
+        alignItems: 'center',
         backgroundColor: color.white
     },
     containerFont: {

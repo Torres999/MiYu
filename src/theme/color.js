@@ -7,7 +7,7 @@ export default {
     white: '#FFF',
     loading: '#241000',
     icon: {
-        test1: '#694B47'
+        rightArrow: '#694B47'
     },
     font: {
         title: '#333333', // 顶部title 左侧输入框的label

@@ -5,10 +5,10 @@ import {
     Button,
     StatusBar,
     ScrollView,
-    RefreshControl, ImageBackground, Image
+    RefreshControl, ImageBackground, Image, TouchableOpacity
 } from 'react-native';
 import { color, size, styles } from '../../theme';
-import { Divider } from '../../components';
+import { Divider,CommonContainerView } from '../../components';
 import { StackNavigator } from "react-navigation";
 import imageSource from '../../img';
 import MyZoneScreen from './MyZone';
@@ -35,7 +35,7 @@ class MeScreen extends React.Component {
     render() {
         const {refreshing = false} = this.props;
         return (
-            <View style={{flex: 1, backgroundColor: '#f5f5f5',}}>
+            <View style={styles.container}>
                 <StatusBar
                     hidden={false}
                     barStyle="light-content"
@@ -52,34 +52,67 @@ class MeScreen extends React.Component {
                     />}>
 
                     <Divider height={15}/>
-                    <View style={styles.containerView}>
-                        <Image style={[styles.avatar, {margin: 8}]} source={imageSource.companyAvatar}/>
-                        <View>
-                            <Text style={{
-                                fontSize: size.font.xs,
-                                textAlign: 'left',
-                                marginBottom: 5,
-                            }} onPress={() => this.props.navigation.navigate('SelfInfo')}>
-                                陪你度过漫长岁月
-                            </Text>
-                            <Text style={{
-                                fontSize: size.font.xs,
-                                textAlign: 'left',
-                                marginTop: 5,
-                            }} onPress={() => this.props.navigation.navigate('SelfInfo')}>
-                                性别：男
-                            </Text>
+                    <TouchableOpacity
+                        style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            justifyContent: 'space-between'
+                        }}
+                        onPress={() => this.props.navigation.navigate('SelfInfo')}
+                    >
+                        <View style={[styles.flexDirectionRow, styles.containerHeadView, {justifyContent: 'flex-start', flex: 1}]}>
+                            <Image style={[styles.avatar, {margin: 8}]} source={imageSource.companyAvatar}/>
+                            <View>
+                                <Text style={{
+                                    fontSize: size.font.xs,
+                                    textAlign: 'left',
+                                    marginBottom: 5,
+                                }}>
+                                    陪你度过漫长岁月
+                                </Text>
+                                <Text style={{
+                                    fontSize: size.font.xs,
+                                    textAlign: 'left',
+                                    marginTop: 5,
+                                }}>
+                                    性别：男
+                                </Text>
+                            </View>
                         </View>
-                        <View style={[styles.Icon, {marginRight: 12}]}>
-                            <Icon name="chevron-right" size={22} color={color.icon.test1}
-                                  onPress={() => this.props.navigation.navigate('SelfInfo')}/>
+                        <View style={[styles.flexDirectionRow, [styles.containerHeadView, {justifyContent: 'flex-end'}], styles.Icon]}>
+                            <Icon name="chevron-right" size={22} color={color.icon.rightArrow}
+                                  style={{marginRight: 12, opacity: 0.2}}/>
                         </View>
-                    </View>
+                    </TouchableOpacity>
+
+
+                    <Divider height={15}/>
+                    <CommonContainerView icon={{name:"opencart"}}
+                                         text='收藏'
+                                         onPress={() => this.props.navigation.navigate('MyZone')}/>
+
+
+                    <Divider height={15}/>
+                    <CommonContainerView icon={{name:"pagelines"}}
+                                         text='我的蜜境'
+                                         onPress={() => this.props.navigation.navigate('MyZone')}/>
+
+
+                    <Divider height={1}/>
+                    <CommonContainerView icon={{name:"cog"}}
+                                         text='设置'
+                                         onPress={() => {}}/>
+
+
+                    <Divider height={15}/>
+                    <CommonContainerView icon={{name:"pencil"}}
+                                         text='意见反馈'
+                                         onPress={() => this.props.navigation.navigate('Feedback')}/>
 
 
                     <Divider height={15}/>
                     <View style={[styles.flexDirectionRow, styles.containerView]}>
-                        <Icon name="paperclip" size={22} color={color.icon.test1}
+                        <Icon name="paperclip" size={22} color={color.icon.rightArrow}
                               style={[styles.Icon, styles.containerIcon]}/>
                         <Text style={styles.containerFont}
                               onPress={
@@ -100,36 +133,7 @@ class MeScreen extends React.Component {
 
                     <Divider height={15}/>
                     <View style={[styles.flexDirectionRow, styles.containerView]}>
-                        <Icon name="user-secret" size={22} color={color.icon.test1}
-                              style={[styles.Icon, styles.containerIcon]}/>
-                        <Text style={styles.containerFont} onPress={() => this.props.navigation.navigate('MyZone')}>
-                            我的蜜境
-                        </Text>
-                    </View>
-
-                    <Divider height={1}/>
-                    <View style={[styles.flexDirectionRow, styles.containerView]}>
-                        <Icon name="cog" size={22} color={color.icon.test1}
-                              style={[styles.Icon, styles.containerIcon]}/>
-                        <Text style={styles.containerFont}>
-                            设置
-                        </Text>
-                    </View>
-
-
-                    <Divider height={15}/>
-                    <View style={[styles.flexDirectionRow, styles.containerView]}>
-                        <Icon name="pencil" size={22} color={color.icon.test1}
-                              style={[styles.Icon, styles.containerIcon]}/>
-                        <Text style={styles.containerFont} onPress={() => this.props.navigation.navigate('Feedback')}>
-                            意见反馈
-                        </Text>
-                    </View>
-
-
-                    <Divider height={15}/>
-                    <View style={[styles.flexDirectionRow, styles.containerView]}>
-                        <Icon name="repeat" size={22} color={color.icon.test1}
+                        <Icon name="repeat" size={22} color={color.icon.rightArrow}
                               style={[styles.Icon, styles.containerIcon]}/>
                         <Text style={styles.containerFont}>
                             下拉更新,{this.state.testRefresh}
