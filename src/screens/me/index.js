@@ -8,7 +8,7 @@ import {
     RefreshControl, ImageBackground, Image, TouchableOpacity
 } from 'react-native';
 import { color, size, styles } from '../../theme';
-import { Divider,CommonContainerView } from '../../components';
+import { Divider, CommonContainerView, HeadContainerView } from '../../components';
 import { StackNavigator } from "react-navigation";
 import imageSource from '../../img';
 import MyZoneScreen from './MyZone';
@@ -29,7 +29,7 @@ class MeScreen extends React.Component {
         this.state = {
             testText: '头像',
             testRefresh: '....刷新前'
-        }
+        };
     }
 
     render() {
@@ -52,60 +52,33 @@ class MeScreen extends React.Component {
                     />}>
 
                     <Divider height={15}/>
-                    <TouchableOpacity
-                        style={{
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            justifyContent: 'space-between'
-                        }}
-                        onPress={() => this.props.navigation.navigate('SelfInfo')}
-                    >
-                        <View style={[styles.flexDirectionRow, styles.containerHeadView, {justifyContent: 'flex-start', flex: 1}]}>
-                            <Image style={[styles.avatar, {margin: 8}]} source={imageSource.companyAvatar}/>
-                            <View>
-                                <Text style={{
-                                    fontSize: size.font.xs,
-                                    textAlign: 'left',
-                                    marginBottom: 5,
-                                }}>
-                                    陪你度过漫长岁月
-                                </Text>
-                                <Text style={{
-                                    fontSize: size.font.xs,
-                                    textAlign: 'left',
-                                    marginTop: 5,
-                                }}>
-                                    性别：男
-                                </Text>
-                            </View>
-                        </View>
-                        <View style={[styles.flexDirectionRow, [styles.containerHeadView, {justifyContent: 'flex-end'}], styles.Icon]}>
-                            <Icon name="chevron-right" size={22} color={color.icon.rightArrow}
-                                  style={{marginRight: 12, opacity: 0.2}}/>
-                        </View>
-                    </TouchableOpacity>
+                    <HeadContainerView headImg={imageSource.companyAvatar}
+                                       name='陪你度过漫长岁月'
+                                       sex='男'
+                                       onPress={() => this.props.navigation.navigate('SelfInfo')}/>
 
 
                     <Divider height={15}/>
-                    <CommonContainerView icon={{name:"opencart"}}
+                    <CommonContainerView icon={{name: "viadeo"}}
                                          text='收藏'
                                          onPress={() => this.props.navigation.navigate('MyZone')}/>
 
 
                     <Divider height={15}/>
-                    <CommonContainerView icon={{name:"pagelines"}}
+                    <CommonContainerView icon={{name: "pagelines"}}
                                          text='我的蜜境'
                                          onPress={() => this.props.navigation.navigate('MyZone')}/>
 
 
                     <Divider height={1}/>
-                    <CommonContainerView icon={{name:"cog"}}
+                    <CommonContainerView icon={{name: "cog"}}
                                          text='设置'
-                                         onPress={() => {}}/>
+                                         onPress={() => {
+                                         }}/>
 
 
                     <Divider height={15}/>
-                    <CommonContainerView icon={{name:"pencil"}}
+                    <CommonContainerView icon={{name: "pencil"}}
                                          text='意见反馈'
                                          onPress={() => this.props.navigation.navigate('Feedback')}/>
 
@@ -133,7 +106,7 @@ class MeScreen extends React.Component {
 
                     <Divider height={15}/>
                     <View style={[styles.flexDirectionRow, styles.containerView]}>
-                        <Icon name="repeat" size={22} color={color.icon.rightArrow}
+                        <Icon name="angle-double-down" size={22} color={color.icon.rightArrow}
                               style={[styles.Icon, styles.containerIcon]}/>
                         <Text style={styles.containerFont}>
                             下拉更新,{this.state.testRefresh}

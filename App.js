@@ -19,6 +19,7 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
+
 export default class App extends Component<{}> {
     constructor(props) {
         super(props);//必须的，否则constructor报错
@@ -33,7 +34,7 @@ export default class App extends Component<{}> {
     }
 
     state = {
-        selectedTab: 'find'
+        selectedTab: 'me',
     };
 
     render() {

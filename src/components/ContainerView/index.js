@@ -15,7 +15,7 @@ export default class CommonContainerView extends React.Component {
                 style={{
                     flexDirection: 'row',
                     alignItems: 'center',
-                    justifyContent: 'space-between'
+                    justifyContent: 'space-between',
                 }}
                 onPress={onPress}
             >
@@ -29,7 +29,7 @@ export default class CommonContainerView extends React.Component {
                 <View
                     style={[styles.flexDirectionRow, [styles.containerView, {justifyContent: 'flex-end'}], styles.Icon]}>
                     <Icon name={'chevron-right'} size={22} color={color.icon.rightArrow}
-                          style={{marginRight: 12, opacity: 0.2}}/>
+                          style={{marginRight: 12, opacity: 0.3}}/>
                 </View>
             </TouchableOpacity>
         )

@@ -69,17 +69,17 @@ const styles = StyleSheet.create({
         backgroundColor: color.white
     },
     containerView: {
-        height: 34.5,
+        height: 43,
         alignItems: 'center',
         backgroundColor: color.white
     },
     containerFont: {
-        fontSize: size.font.xs,
+        fontSize: size.font.sm,
         textAlign: 'center',
-        margin: 10,
+        marginLeft: 15
     },
     containerIcon: {
-        marginLeft: 12
+        marginLeft: 15
     },
 
 
